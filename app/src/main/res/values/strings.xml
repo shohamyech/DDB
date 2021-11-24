@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">DDB</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Envelope">Envelope</string>
+    <string name="Big">Big</string>
+    <string name="Small">Small</string>
+    <string name="FillAllFieldsErrorMsg">אנא מלא את כל השדות לפני שתוכל להמשיך</string>
+    <string name="LocationPermissionDenied">שימוש במיקום נדחה, הכנס ידנית את מיקום החבילה</string>
+    <string name="ParcelSavedSuccess">החבילה נשמרה בהצלחה!</string>
+    <string name="ParcelSavedFail">החבילה לא נשמרה, בדוק את החיבור לאינטרנט</string>
+    <string name="InvalidPhoneNumber">מספר הטלפון אינו חוקי</string>
+</resources>

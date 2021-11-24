@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parcel_nav"
+    app:startDestination="@id/parcelType">
+
+    <fragment
+        android:id="@+id/parcelType"
+        android:name="com.example.ddb.UI.ParcelTypeFrag"
+        android:label="fragment_parcel_type"
+        tools:layout="@layout/fragment_parcel_type" >
+        <action
+            android:id="@+id/action_parcelType_to_parcelSpec"
+            app:destination="@id/parcelSpec"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left" />
+    </fragment>
+    <fragment
+        android:id="@+id/parcelSpec"
+        android:name="com.example.ddb.UI.ParcelSpecFrag"
+        android:label="fragment_parcel_spec"
+        tools:layout="@layout/fragment_parcel_spec" >
+        <action
+            android:id="@+id/action_parcelSpec_to_parcelDest"
+            app:destination="@id/parcelDest"
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left" />
+        <action
+            android:id="@+id/action_parcelSpec_to_parcelType"
+            app:destination="@id/parcelType"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right" />
+    </fragment>
+    <fragment
+        android:id="@+id/parcelDest"
+        android:name="com.example.ddb.UI.ParcelDestFrag"
+        android:label="fragment_parcel_dest"
+        tools:layout="@layout/fragment_parcel_dest" >
+        <action
+            android:id="@+id/action_parcelDest_to_parcelSpec"
+            app:destination="@id/parcelSpec"
+            app:enterAnim="@anim/from_left"
+            app:exitAnim="@anim/to_right" />
+    </fragment>
+</navigation>
