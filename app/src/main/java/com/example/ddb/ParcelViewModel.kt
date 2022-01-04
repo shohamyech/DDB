@@ -12,11 +12,10 @@ class ParcelViewModel : ViewModel(){
     val parcel : Parcel get() = _parcel.value!!
 
     fun onTypeParcelChanged(type: String){
-
        when (type){
-           "Envelope" -> parcel.type = ParcelType.Envelope
-           "Big" -> parcel.type = ParcelType.Big
-           "Small" -> parcel.type = ParcelType.Small
+           "ENVELOPE" -> parcel.type = ParcelType.ENVELOPE
+           "BIG" -> parcel.type = ParcelType.BIG
+           "SMALL" -> parcel.type = ParcelType.SMALL
        }
     }
 

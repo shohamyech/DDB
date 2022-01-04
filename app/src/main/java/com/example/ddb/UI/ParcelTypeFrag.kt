@@ -31,7 +31,13 @@ class ParcelTypeFrag : Fragment() {
         binding.parcelViewModel = model
 
         binding.nextBtn.setOnClickListener {
-            findNavController().navigate(R.id.action_parcelType_to_parcelSpec)
+            if (binding.parcelContentEditText.text.isEmpty())
+                binding.errorMsgText.setText(R.string.FillAllFieldsErrorMsg)
+            else
+            {
+                binding.errorMsgText.text = ""
+                findNavController().navigate(R.id.action_parcelType_to_parcelSpec)
+            }
         }
         binding.backBtn.setOnClickListener {
             startActivity(Intent(activity, MainActivity::class.java))

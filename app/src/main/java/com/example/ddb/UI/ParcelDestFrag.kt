@@ -21,6 +21,8 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil.PhoneNumberType
 import com.google.i18n.phonenumbers.Phonenumber
 import com.google.i18n.phonenumbers.Phonenumber.PhoneNumber
 import java.lang.Exception
+import android.text.TextUtils
+import android.util.Patterns
 
 
 class ParcelDestFrag : Fragment() {
@@ -48,8 +50,12 @@ class ParcelDestFrag : Fragment() {
                     binding.phoneEditText.text.isEmpty()) {
                 binding.errorMsgText.setText(R.string.FillAllFieldsErrorMsg)
             }
-            else if (!isPhoneNumberValidate(model.parcel.phone)){
+            else if (!isPhoneNumberValid(model.parcel.phone)){
                 binding.errorMsgText.setText(R.string.InvalidPhoneNumber)
+            }
+            else if(!isValidEmail(model.parcel.email))
+            {
+                binding.errorMsgText.setText(R.string.InvalidEmail)
             }
             else {
                 binding.errorMsgText.text = ""
@@ -75,17 +81,13 @@ class ParcelDestFrag : Fragment() {
         _binding = null
     }
 
-    fun isPhoneNumberValidate(mobNumber: String?, countryCode: String = "972"): Boolean {
-        val phoneNumberUtil = PhoneNumberUtil.getInstance()
-        var phoneNumber: PhoneNumber? = null
+    fun isPhoneNumberValid(mobNumber: String): Boolean {
 
-        try {
-            val isoCode = phoneNumberUtil.getRegionCodeForCountryCode(countryCode.toInt())
-            phoneNumber = phoneNumberUtil.parse(mobNumber, isoCode)
-            return phoneNumberUtil.isValidNumber(phoneNumber)
+        val re = "^0?([5]{1}\\d{8})\$".toRegex()
+        return re.matches(mobNumber)
+    }
 
-        } catch (e: Exception) { }
-
-       return false
+    fun isValidEmail(target: CharSequence?): Boolean {
+        return !TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches()
     }
 }
